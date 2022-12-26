@@ -1,5 +1,6 @@
 import { FormGroup, FormControl, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { AuthTestService } from '@modules/auth/services/auth-test.service';
 
 @Component({
   selector: 'app-register-form',
@@ -10,12 +11,19 @@ export class RegisterFormComponent implements OnInit {
 
   registerForm:FormGroup = new FormGroup({});
 
+  constructor(private authService:AuthTestService) {}
 
   ngOnInit(): void {
 
+    // Por default se disparan las validaciones en el evento change, sin embargo poder usar blur o submit
     this.registerForm = new FormGroup(
       {
-        email: new FormControl('',[Validators.required, Validators.email]),
+        email: new FormControl('', {
+          validators: [Validators.required, Validators.email],
+          asyncValidators: this.authService.uniqueEmailValidator(),
+          updateOn:'blur'
+        }
+        ),
         name: new FormControl('',[Validators.required, Validators.minLength(3)]),
         lastName: new FormControl('',[Validators.required, Validators.minLength(3)]),
         phone: new FormControl('',[Validators.required, Validators.minLength(3)]),
@@ -27,6 +35,16 @@ export class RegisterFormComponent implements OnInit {
         validators:passwordMatchValidator
       }
     )
+
+    // Así escuchamos los cambios de los elementos o el formularios
+    const formControlPhone = this.registerForm.get('phone') as FormControl;
+    formControlPhone.valueChanges.subscribe((res) => {
+      console.log('👌👌👌', res)
+    })
+
+    this.registerForm.valueChanges.subscribe((res) => {
+      console.log('👌👌👌', res)
+    })
 
   }
 

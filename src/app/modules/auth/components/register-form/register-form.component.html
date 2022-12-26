@@ -41,6 +41,7 @@
             type="password" placeholder="Confirmar la contraseña">
         </div> -->
         <div class="form-input">
+            <!-- El pending sirve para esperar las validaciones asincronas puedan culminarse-->
             <button [disabled]="registerForm.invalid || registerForm.pending"  class="btn-primary">Continuar</button>
         </div>
 
