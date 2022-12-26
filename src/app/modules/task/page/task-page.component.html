@@ -1,1 +1,5 @@
-<p>task-page works!</p>
+<app-header></app-header>
+<button (click)="mostrarTexto()">Mostrar/Ocultar</button>
+<div *ngIf="showText">
+  Hola Mundo este es un texto :):)
+</div>

@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class TaskPageComponent {
 
+  showText = true;
+
+  mostrarTexto(){
+    this.showText = !this.showText;
+  }
+
 }
