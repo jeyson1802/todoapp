@@ -1,5 +1,17 @@
 <app-header></app-header>
-<button (click)="mostrarTexto()">Mostrar/Ocultar</button>
-<div *ngIf="showText">
-  Hola Mundo este es un texto :):)
+
+<div class="padre" [ngSwitch]="case">
+  <div *ngSwitchCase="1" class="hijo">
+    Hola soy Pedro
+  </div>
+  <div *ngSwitchCase="2" class="hijo">
+    Hola soy Maria
+  </div>
+  <div *ngSwitchCase="3" class="hijo">
+    Hola somos Pedro y Maria
+  </div>
+  <div *ngSwitchDefault="" class="hijo">
+    Opcion por defecto
+  </div>
+
 </div>
