@@ -1,12 +1,14 @@
 <app-header></app-header>
-<div>
-  <ul *ngIf="results.length > 0 else tplNotFound">
-    <li *ngFor="let item of results">
-      {{item}}
-    </li>
-  </ul>
-</div>
 
-<ng-template #tplNotFound>
- <p>No hay resultados</p>
+<ul>
+  <li *ngFor="let user of listUser">
+    <!-- Se usa en parte para llamar directamente un template-->
+    <ng-container *ngTemplateOutlet="tplHello;context:{currentUser:user}">
+    </ng-container>
+  </li>
+</ul>
+
+
+<ng-template #tplHello let-myuser="currentUser">
+  Hola buenos días {{myuser?.name}}
 </ng-template>
