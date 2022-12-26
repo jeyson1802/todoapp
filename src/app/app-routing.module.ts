@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ValidateSessionGuard } from '@core/guards/validate-session.guard';
-import { HomeChildOneComponent } from './home-child-one/home-child-one.component';
-import { HomeChildTwoComponent } from './home-child-two/home-child-two.component';
-import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
 // {
