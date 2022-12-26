@@ -4,7 +4,7 @@
       </div>
       <div class="menu">
           <ul>
-              <li [ngClass]="{'active' : 'primero'}" *ngFor="let item of menu;let indice = index; let primero = first;let ultimo = last;let par = even;let impar = odd">
+              <li [ngClass]="{'active' : primero}" *ngFor="let item of menu;let indice = index; let primero = first;let ultimo = last;let par = even;let impar = odd">
                 {{item.name}}
               </li>
           </ul>
