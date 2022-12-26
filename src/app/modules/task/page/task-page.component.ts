@@ -7,7 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskPageComponent implements OnInit{
 
-  case:number = 1;
+  results:Array<string> = [
+    'Respuesta 1',
+    'Respuesta 2',
+    'Respuesta 3',
+    'Respuesta 4'
+  ]
 
   ngOnInit(): void {
   }

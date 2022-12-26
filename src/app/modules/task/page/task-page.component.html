@@ -1,10 +1,12 @@
 <app-header></app-header>
-
 <div>
-  <img appImgBroken class="imagen" src="https://avastars.githubusercontent.com/u/97020486?v=4" alt="">
-  <img appImgBroken class="imagen" src="https://avatars.githubusercontent.com/u/97020486?v=4" alt="">
-  <img appImgBroken class="imagen" src="https://avastars.githubusercontent.com/u/97020486?v=4" alt="">
-  <img appImgBroken class="imagen" src="https://avatars.githubusercontent.com/u/97020486?v=4" alt="">
-  <img appImgBroken class="imagen" src="https://avastars.githubusercontent.com/u/97020486?v=4" alt="">
-  <img appImgBroken class="imagen" src="https://avatars.githubusercontent.com/u/97020486?v=4" alt="">
+  <ul *ngIf="results.length > 0 else tplNotFound">
+    <li *ngFor="let item of results">
+      {{item}}
+    </li>
+  </ul>
 </div>
+
+<ng-template #tplNotFound>
+ <p>No hay resultados</p>
+</ng-template>
