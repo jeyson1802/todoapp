@@ -12,15 +12,15 @@ export class TaskPageComponent implements OnInit, OnDestroy{
 
   constructor(){}
 
-  listObservables$ : Array<Subscription> = [];
+// listObservables$ : Array<Subscription> = [];
 
   ngOnInit(): void {
 
-    const observer1$ = interval(1000).subscribe((res) => {
-      console.log('LLAMANDOOO');
-    });
+    // const observer1$ = interval(1000).subscribe((res) => {
+    //   console.log('LLAMANDOOO');
+    // });
 
-    this.listObservables$.push(observer1$);
+    // this.listObservables$.push(observer1$);
 
     this.groups = [
       {
@@ -80,6 +80,6 @@ export class TaskPageComponent implements OnInit, OnDestroy{
 
   ngOnDestroy(): void {
     console.log('Me voy a destruir');
-    this.listObservables$.forEach((subscription) => {subscription.unsubscribe()});
+    // this.listObservables$.forEach((subscription) => {subscription.unsubscribe()});
   }
 }
