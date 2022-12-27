@@ -1,4 +1,5 @@
 import { AfterViewChecked, AfterViewInit, Component, DoCheck, ElementRef, Input,OnChanges,OnInit,Renderer2,SimpleChanges,ViewChild } from '@angular/core';
+import { TestCourseService } from '@shared/services/test-course.service';
 import { interval } from 'rxjs';
 
 @Component({
@@ -13,7 +14,10 @@ export class CardComponent implements OnInit, AfterViewInit, AfterViewChecked, D
   @Input() idOrder: string | number = 0
   @Input() items: Array<any> = []
 
-  constructor(private render2:Renderer2) { }
+  constructor(
+    // private render2:Renderer2
+    private testCourService:TestCourseService
+    ) { }
 
   ngOnInit(): void {
     // console.log('Holaa soy un Card Creado!! 😉', this.elementRefId);
@@ -25,8 +29,8 @@ export class CardComponent implements OnInit, AfterViewInit, AfterViewChecked, D
   //cargado cuando la vista esta cargada / se usa para aplicar estilos o comportamientos de manera dinamica al terminar la carga
   ngAfterViewInit(): void {
     // console.log('Holaa soy un Card Creado!! 😉', this.elementRefId);
-    const elementTitle = this.elementRefId.nativeElement;
-    this.render2.setStyle(elementTitle, 'color', 'red');
+    // const elementTitle = this.elementRefId.nativeElement;
+    // this.render2.setStyle(elementTitle, 'color', 'red');
   }
 
   //cuando la vista sufra un cambio el HTML / animaciones / librerias externas
@@ -46,6 +50,7 @@ export class CardComponent implements OnInit, AfterViewInit, AfterViewChecked, D
 
 
   sendData():void{
+    this.testCourService.setData('Hola desde Card');
   }
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TestCourseService } from '@shared/services/test-course.service';
 
 @Component({
   selector: 'app-header',
@@ -33,6 +34,9 @@ export class HeaderComponent implements OnInit {
       router: []
     }
   ]
+
+  constructor(public testCourService:TestCourseService){
+  }
 
   ngOnInit(): void {
   }
