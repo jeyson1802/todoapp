@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { CookieService } from 'ngx-cookie';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -7,9 +8,9 @@ import { Observable } from 'rxjs';
 })
 export class ValidateSessionGuard implements CanActivate {
 
-  private cookie:string | null = '6546465'; //TODO aqui consultaremos la cookie en el navegador
+  private cookie:string | undefined = this.cookieService.get('token_session'); //TODO aqui consultaremos la cookie en el navegador
 
-  constructor(private router:Router) {
+  constructor(private router:Router, private cookieService: CookieService) {
 
   }
 
@@ -23,11 +24,11 @@ export class ValidateSessionGuard implements CanActivate {
 
     console.log('COOKIE ==> ', this.cookie)
 
-    if(this.cookie !== null) {
-      return true;
-    } else {
+    if(!this.cookie) {
       this.router.navigate(['/','auth','login'])
       return false;
+    } else {
+      return true;
     }
 
   }

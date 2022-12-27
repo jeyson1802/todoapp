@@ -26,6 +26,11 @@ const routes: Routes = [
   path:'task',
   loadChildren: () => import('@modules/task/task.module').then((m) => m.TaskModule),
   canActivate:[ValidateSessionGuard]
+ },
+ {
+  //indicador de que una ruta no existe
+  path:'**',
+  redirectTo:'/task'
  }
 ];
 
