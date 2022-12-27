@@ -7,16 +7,18 @@ import { Component, Input, OnChanges, OnInit, SimpleChange, SimpleChanges } from
 })
 export class ColumnComponent implements OnInit, OnChanges {
 
-  @Input() data:Array<{id:string, name:string}> = [];
+  @Input() data:Array<any> = [];
+  @Input() name:string = '';
 
   constructor(){
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('quiero ver los cambios ==> ' , changes)
   }
 
   ngOnInit(): void {
   }
 
+  addTask():void{
+  }
 }

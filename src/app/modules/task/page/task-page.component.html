@@ -1,17 +1,5 @@
 <app-header></app-header>
-
-<ul>
-  <li *ngFor="let user of listUser">
-    <!-- Se usa en parte para llamar directamente un template-->
-    <ng-container *ngTemplateOutlet="tplHello;context:{currentUser:user}">
-    </ng-container>
-  </li>
-</ul>
-
-
-<ng-template #tplHello let-myuser="currentUser">
-  Hola buenos días {{myuser?.name}}
-</ng-template>
-
-
-<app-column [data]="listUser"></app-column>
+<div class="task-columns">
+  <app-column *ngFor="let group of groups" [data]="group.list" [name]="group.label">
+  </app-column>
+</div>
