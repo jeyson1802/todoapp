@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { interval, Subscription } from 'rxjs';
+import { interval, Observable, Subscription } from 'rxjs';
 import { TaskService } from '../services/task.service';
 
 @Component({
@@ -10,6 +10,8 @@ import { TaskService } from '../services/task.service';
 export class TaskPageComponent implements OnInit, OnDestroy{
 
   groups: Array<any> = [];
+  //Suscribirse desde el front
+  groups$:Observable<any> = this.taskService.getTask();
 
   constructor(private taskService:TaskService){}
 
@@ -17,14 +19,16 @@ export class TaskPageComponent implements OnInit, OnDestroy{
 
   ngOnInit(): void {
 
-    //cuando me suscribo recien estoy recibiendo la informacion
-    this.taskService.getTask().subscribe(
-      (response) => {
-        const {data} = response;
-        this.groups = data;
-        console.log('--->', this.groups)
-      }
-    )
+
+
+    //cuando me suscribo recien estoy recibiendo la informacion si es de tipo HTTP se desuscribe solo
+    // this.taskService.getTask().subscribe(
+    //   (response) => {
+    //     const {data} = response;
+    //     this.groups = data;
+    //     console.log('--->', this.groups)
+    //   }
+    // )
 
     // const observer1$ = interval(1000).subscribe((res) => {
     //   console.log('LLAMANDOOO');

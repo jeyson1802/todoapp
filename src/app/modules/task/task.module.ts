@@ -7,6 +7,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { SharedModule } from '@shared/shared.module';
 import { ColumnComponent } from './components/column/column.component';
 import { CardComponent } from './components/card/card.component';
+import { NewTaskComponent } from './components/new-task/new-task.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,11 +17,13 @@ import { CardComponent } from './components/card/card.component';
     HeaderComponent,
     ColumnComponent,
     CardComponent,
+    NewTaskComponent
   ],
   imports: [
     CommonModule,
     TaskRoutingModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ]
 })
 export class TaskModule { }

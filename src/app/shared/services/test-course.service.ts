@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class TestCourseService {
 
-  public dataTest:string = 'Hola mundo'
+  public dataTest:string = 'Task'
 
   constructor() { }
 

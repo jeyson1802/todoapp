@@ -1,5 +1,14 @@
 <app-header></app-header>
 <div class="task-columns">
-  <app-column *ngFor="let group of groups" [data]="group.list" [name]="group.label">
+  <!-- <app-column *ngFor="let group of groups" [data]="group.list" [name]="group.label">
+  </app-column> -->
+  <!-- Suscribirse desde el frontend al observable-->
+  <!-- <pre>
+    {{groups$ | async | json}}
+  </pre> -->
+  <!-- Se usa generalmente cuando no necesitamos desuscrbirnos del observable-->
+  <app-column *ngFor="let group of (groups$ | async)?.data " [data]="group.list" [name]="group.label">
   </app-column>
 </div>
+<app-new-task>
+</app-new-task>
