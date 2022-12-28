@@ -20,7 +20,9 @@ export class TaskPageComponent implements OnInit, OnDestroy{
     //cuando me suscribo recien estoy recibiendo la informacion
     this.taskService.getTask().subscribe(
       (response) => {
-        console.log('--->', response)
+        const {data} = response;
+        this.groups = data;
+        console.log('--->', this.groups)
       }
     )
 
