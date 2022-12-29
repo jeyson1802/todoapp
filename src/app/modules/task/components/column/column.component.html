@@ -8,10 +8,13 @@
       <!-- <ui-btn icon="uil uil-ellipsis-h" color="transparent"></ui-btn> -->
   </div>
 </div>
+<div>
+  <button class="btn-primary" (click)="addTask()">Agregar</button>
+</div>
 <div class="column">
   <app-card
    *ngFor="let card of data"
-   [items]="card.items"
+   [items]="card.item"
    [idOrder]="card.order">
 </app-card>
 </div>

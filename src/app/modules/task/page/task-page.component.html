@@ -7,7 +7,7 @@
     {{groups$ | async | json}}
   </pre> -->
   <!-- Se usa generalmente cuando no necesitamos desuscrbirnos del observable-->
-  <app-column *ngFor="let group of (groups$ | async)?.data " [data]="group.list" [name]="group.label">
+  <app-column *ngFor="let group of (groups$ | async)?.data " [data]="group.list" [name]="group.label" [id]="group._id">
   </app-column>
 </div>
 <app-new-task>

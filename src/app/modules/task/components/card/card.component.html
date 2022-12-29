@@ -3,10 +3,10 @@
   <ul class="body">
       <ng-container *ngFor="let item of items">
 
-          <li *ngIf="['price','time','Observacion'].includes(item.key)">
-              <i class="uil" [ngClass]="{
-                  'uil-credit-card':item.key == 'price',
-                  'uil-clock':item.key == 'time'
+          <li *ngIf="['Precio','time','Observacion'].includes(item.key)">
+              <i [ngClass]="{
+                  'uil-credit-card':item.key == 'Precio',
+                  'uil-clock':item.key == 'Observacion'
               }"></i>
               <span>{{item.value}}</span>
           </li>
@@ -16,5 +16,4 @@
         </li>
       </ng-container>
   </ul>
-  <button (click)="sendData()"> Enviar datos al header</button>
 </div>

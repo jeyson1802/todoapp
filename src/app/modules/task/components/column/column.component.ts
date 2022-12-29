@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
+import { NewTaskService } from '@modules/task/services/new-task.service';
 
 @Component({
   selector: 'app-column',
@@ -9,8 +10,9 @@ export class ColumnComponent implements OnInit, OnChanges {
 
   @Input() data:Array<any> = [];
   @Input() name:string = '';
+  @Input() id:string = '';
 
-  constructor(){
+  constructor(private newTaskService: NewTaskService){
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -20,5 +22,6 @@ export class ColumnComponent implements OnInit, OnChanges {
   }
 
   addTask():void{
+    this.newTaskService.setShow(true, this.id);
   }
 }
