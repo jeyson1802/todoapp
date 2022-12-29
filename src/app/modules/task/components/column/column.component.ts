@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
+import { ColumnService } from '@modules/task/services/column.service';
 import { NewTaskService } from '@modules/task/services/new-task.service';
 
 @Component({
@@ -6,19 +7,26 @@ import { NewTaskService } from '@modules/task/services/new-task.service';
   templateUrl: './column.component.html',
   styleUrls: ['./column.component.css']
 })
-export class ColumnComponent implements OnInit, OnChanges {
+export class ColumnComponent implements OnInit {
 
   @Input() data:Array<any> = [];
   @Input() name:string = '';
   @Input() id:string = '';
 
-  constructor(private newTaskService: NewTaskService){
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
+  constructor(private newTaskService: NewTaskService,
+    private columnService:ColumnService){
   }
 
   ngOnInit(): void {
+    this.columnService.reloadColumn$.subscribe(
+      (response) => {
+        if(response && response?.data?._id === this.id) {
+          const {data} = response;
+          this.data = data.list;
+          console.log('--->', response)
+        }
+      }
+    );
   }
 
   addTask():void{

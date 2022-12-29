@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environments';
+import { ColumnService } from './column.service';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,7 @@ export class NewTaskService {
 
   constructor(
     private httpClient:HttpClient,
-    //private columnService:ColumnService
+    private columnService:ColumnService
     ) { }
 
   public setShow(flag:boolean, payload?:any){
@@ -40,7 +41,7 @@ export class NewTaskService {
       `${this.URL}/task/${this.payload}`,
       body
       ).pipe(
-        //tap(() => this.columnService.reloadColumn(this.payload))
+        tap(() => this.columnService.reloadColumn(this.payload))
       )
   }
 }
